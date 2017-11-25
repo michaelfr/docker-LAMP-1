@@ -17,13 +17,15 @@ ENV CURLOPT_CAINFO /etc/ssl/certs/ca-certificates.crt
 
 # here are the ports that various things in this container are listening on
 # for http (apache, only if APACHE_DISABLE_PORT_80 = false)
-#EXPOSE 80
+EXPOSE 80
 # for https (apache)
 EXPOSE 443
 # for postgreSQL server (only if START_POSTGRESQL = true)
 EXPOSE 5432
 # for MySQL server (mariadb, only if START_MYSQL = true)
 EXPOSE 3306
+# for app volume syncing with local
+VOLUME /srv/http
 
 # start servers
 ADD startServers.sh /usr/sbin/start-servers
